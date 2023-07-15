@@ -3,6 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tocata_school_of_music/app/environment/enviroments.dart';
 import 'package:tocata_school_of_music/app/view/bloc/app_bloc.dart';
+import 'package:tocata_school_of_music/login/login.dart';
+import 'package:tocata_school_of_music/sign_up/sign_up.dart';
 
 part './layers/data_layer_injector.dart';
 part './layers/domain_layer_injector.dart';

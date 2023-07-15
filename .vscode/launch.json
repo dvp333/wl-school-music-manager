@@ -17,15 +17,15 @@
             ]
         },
         {
-            "name": "tocata_school_of_music (debug staging)",
+            "name": "tocata_school_of_music (debug prod)",
             "cwd": "apps/tocata_school_of_music",
             "request": "launch",
             "type": "dart",
-            "program": "apps/tocata_school_of_music/lib/main_staging.dart",
+            "program": "apps/tocata_school_of_music/lib/main_production.dart",
             "flutterMode": "debug",
             "args": [
                 "--flavor", "staging",
-                "--target", "lib/main_staging.dart"
+                "--target", "lib/main_production.dart"
             ]
         }
     ]

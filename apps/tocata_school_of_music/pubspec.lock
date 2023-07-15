@@ -127,6 +127,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  design_system:
+    dependency: "direct main"
+    description:
+      path: "../../modules/design_system"
+      relative: true
+    source: path
+    version: "0.0.1"
   diff_match_patch:
     dependency: transitive
     description:
@@ -255,6 +262,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.4"
+  flow_builder:
+    dependency: "direct main"
+    description:
+      name: flow_builder
+      sha256: "212a5c6575e87bec2003fa3f31dd7d80f0d89f6152db54f43fb0b6f45943e955"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.9"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -291,6 +306,29 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: "direct main"
+    description:
+      name: font_awesome_flutter
+      sha256: "7811c8b4e7455d2f60ef30022a6a07376de2858b47aecbe2861965b348fe2016"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.1.0"
+  form_inputs:
+    dependency: "direct main"
+    description:
+      path: "../../modules/form_inputs"
+      relative: true
+    source: path
+    version: "0.0.1"
+  formz:
+    dependency: transitive
+    description:
+      name: formz
+      sha256: b2b4cb99b228020d2c7185500eed1c02ca290dd4cc19edaf42df17f5dc546d5a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.0"
   frontend_server_client:
     dependency: transitive
     description:
