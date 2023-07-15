@@ -37,3 +37,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    # - assets/images/
+    - lib/app/environment/assets/dev/
+    - lib/app/environment/assets/stg/
+    - lib/app/environment/assets/prod/
