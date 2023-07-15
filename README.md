@@ -37,3 +37,9 @@ Flutter White label app for Music School
      └────────────────────────┘
 
 
+# TODO:
+
+  - Create Firebase for Tocata Manager
+  - Update Firebase values in Flutter project
+  - Create login package
+  - Create Splash

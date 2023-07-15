@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "sample_app (release prod)",
-            "cwd": "apps/sample_app",
+            "name": "tocata_school_of_music (release prod)",
+            "cwd": "apps/tocata_school_of_music",
             "request": "launch",
             "type": "dart",
-            "program": "apps/sample_app/lib/main_production.dart",
+            "program": "apps/tocata_school_of_music/lib/main_production.dart",
             "flutterMode": "release",
             "args": [
                 "--flavor", "production",
@@ -17,11 +17,11 @@
             ]
         },
         {
-            "name": "sample_app (debug staging)",
-            "cwd": "apps/sample_app",
+            "name": "tocata_school_of_music (debug staging)",
+            "cwd": "apps/tocata_school_of_music",
             "request": "launch",
             "type": "dart",
-            "program": "apps/sample_app/lib/main_staging.dart",
+            "program": "apps/tocata_school_of_music/lib/main_staging.dart",
             "flutterMode": "debug",
             "args": [
                 "--flavor", "staging",
