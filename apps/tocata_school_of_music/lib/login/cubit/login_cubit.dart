@@ -27,6 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
       state.copyWith(
         password: password,
         isValid: value.trim().isNotEmpty,
+        status: FormzSubmissionStatus.initial,
       ),
     );
   }

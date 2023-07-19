@@ -39,7 +39,31 @@ Flutter White label app for Music School
 
 # TODO:
 
-  - Create Firebase for Tocata Manager
-  - Update Firebase values in Flutter project
-  - Create login package
-  - Create Splash
+
+  - Create new email for Tocata app manager ---------->
+  - Create Firebase for Tocata Manager --------------->
+  - Update Firebase values in Flutter project -------->
+  - Setup Firestore ---------------------------------->
+  - Colocar AuthenticationRepository no GetIt -------->
+  - Setup CrashLytics -------------------------------->
+  - Setup Melos -------------------------------------->
+  - Setup App Check ---------------------------------->
+  - Colocar Scroll na tela de signup ----------------->
+
+  - Create login package ----------------------------->
+  - Create Splash ------------------------------------>
+  - Create Firebase app distribution ----------------->
+  - Create Ap admin to add new users ----------------->
+  - Find package to play midi ------------------------> later
+  - Find midi with guitar notes sound ----------------> later
+  - Build Guitar game levels ------------------------->
+
+      * Etapa 1 -> Somente corda E. Mostrar as oitavas em uma cor e outra cor para a nota selecionada.
+        - nivel 1 ----------> casas 0 a 5
+        - nivel 2 ----------> casas 6 a 12
+        - nivel 4 ----------> casas 13 a 17
+        - nivel 5 ----------> casas 17 a 22
+        - nivel 6 ----------> todas as casas
+
+  - Implement instruments home menu ------------------>
+  - Link app with with guitar game ------------------->

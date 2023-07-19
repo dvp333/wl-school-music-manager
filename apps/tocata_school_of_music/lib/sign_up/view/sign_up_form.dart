@@ -1,3 +1,4 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -20,11 +21,17 @@ class SignUpForm extends StatelessWidget {
             );
         }
       },
-      child: Align(
-        alignment: const Alignment(0, -1 / 3),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const SizedBox(height: 32),
+            Image.asset(
+              TocataImages.logo,
+              package: TocataImages.packageName,
+            ),
+            const SizedBox(height: 32),
             _EmailInput(),
             const SizedBox(height: 8),
             _PasswordInput(),
@@ -46,6 +53,7 @@ class _EmailInput extends StatelessWidget {
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
         return TextField(
+          style: const TextStyle(color: Colors.white),
           key: const Key('signUpForm_emailInput_textField'),
           onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
@@ -54,6 +62,7 @@ class _EmailInput extends StatelessWidget {
             helperText: '',
             errorText:
                 state.email.displayError != null ? 'invalid email' : null,
+            errorStyle: const TextStyle(color: Colors.white),
           ),
         );
       },
@@ -68,6 +77,7 @@ class _PasswordInput extends StatelessWidget {
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return TextField(
+          style: const TextStyle(color: Colors.white),
           key: const Key('signUpForm_passwordInput_textField'),
           onChanged: (password) =>
               context.read<SignUpCubit>().passwordChanged(password),
@@ -77,6 +87,7 @@ class _PasswordInput extends StatelessWidget {
             helperText: '',
             errorText:
                 state.password.displayError != null ? 'invalid password' : null,
+            errorStyle: const TextStyle(color: Colors.white),
           ),
         );
       },
@@ -93,6 +104,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
           previous.confirmedPassword != current.confirmedPassword,
       builder: (context, state) {
         return TextField(
+          style: const TextStyle(color: Colors.white),
           key: const Key('signUpForm_confirmedPasswordInput_textField'),
           onChanged: (confirmPassword) => context
               .read<SignUpCubit>()
@@ -104,6 +116,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
             errorText: state.confirmedPassword.displayError != null
                 ? 'passwords do not match'
                 : null,
+            errorStyle: const TextStyle(color: Colors.white),
           ),
         );
       },
@@ -124,12 +137,15 @@ class _SignUpButton extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  backgroundColor: Colors.orangeAccent,
+                  backgroundColor: Colors.white,
                 ),
                 onPressed: state.isValid
                     ? () => context.read<SignUpCubit>().signUpFormSubmitted()
                     : null,
-                child: const Text('SIGN UP'),
+                child: Text(
+                  'SIGN UP',
+                  style: TextStyle(color: Colors.blue.shade900),
+                ),
               );
       },
     );

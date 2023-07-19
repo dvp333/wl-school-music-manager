@@ -1,3 +1,4 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,24 +23,30 @@ class LoginForm extends StatelessWidget {
             );
         }
       },
-      child: Align(
-        alignment: const Alignment(0, -1 / 3),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.account_box),
-              const SizedBox(height: 16),
-              _EmailInput(),
-              const SizedBox(height: 8),
-              _PasswordInput(),
-              const SizedBox(height: 8),
-              _LoginButton(),
-              // const SizedBox(height: 8),
-              // _GoogleLoginButton(),
-              const SizedBox(height: 4),
-              _SignUpButton(),
-            ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Align(
+          alignment: const Alignment(0, -1 / 3),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  TocataImages.logo,
+                  package: TocataImages.packageName,
+                ),
+                const SizedBox(height: 16),
+                const _EmailInput(isValidationEnabled: false),
+                const SizedBox(height: 8),
+                const _PasswordInput(isValidationEnabled: false),
+                const SizedBox(height: 8),
+                _LoginButton(),
+                // const SizedBox(height: 8),
+                // _GoogleLoginButton(),
+                const SizedBox(height: 4),
+                _SignUpButton(),
+              ],
+            ),
           ),
         ),
       ),
@@ -48,6 +55,10 @@ class LoginForm extends StatelessWidget {
 }
 
 class _EmailInput extends StatelessWidget {
+  const _EmailInput({this.isValidationEnabled = true});
+
+  final bool isValidationEnabled;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
@@ -57,11 +68,14 @@ class _EmailInput extends StatelessWidget {
           key: const Key('loginForm_emailInput_textField'),
           onChanged: (email) => context.read<LoginCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
+          style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             labelText: 'email',
             helperText: '',
-            errorText:
-                state.email.displayError != null ? 'invalid email' : null,
+            errorText: isValidationEnabled
+                ? (state.email.displayError != null ? 'invalid email' : null)
+                : null,
+            errorStyle: const TextStyle(color: Colors.white),
           ),
         );
       },
@@ -70,6 +84,10 @@ class _EmailInput extends StatelessWidget {
 }
 
 class _PasswordInput extends StatelessWidget {
+  const _PasswordInput({this.isValidationEnabled = true});
+
+  final bool isValidationEnabled;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
@@ -80,10 +98,14 @@ class _PasswordInput extends StatelessWidget {
           onChanged: (password) =>
               context.read<LoginCubit>().passwordChanged(password),
           obscureText: true,
+          style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             labelText: 'password',
             helperText: '',
-            errorText: !state.isValid ? 'invalid password' : null,
+            errorText: isValidationEnabled
+                ? (!state.isValid ? 'invalid password' : null)
+                : null,
+            errorStyle: const TextStyle(color: Colors.white),
           ),
         );
       },
@@ -104,12 +126,15 @@ class _LoginButton extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  backgroundColor: const Color(0xFFFFD600),
+                  backgroundColor: Colors.white,
                 ),
                 onPressed: state.isValid
                     ? () => context.read<LoginCubit>().logInWithCredentials()
                     : null,
-                child: const Text('LOGIN'),
+                child: Text(
+                  'LOGIN',
+                  style: TextStyle(color: Colors.blue.shade900),
+                ),
               );
       },
     );
@@ -145,9 +170,9 @@ class _SignUpButton extends StatelessWidget {
     return TextButton(
       key: const Key('loginForm_createAccount_flatButton'),
       onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
-      child: Text(
+      child: const Text(
         'CREATE ACCOUNT',
-        style: TextStyle(color: theme.primaryColor),
+        style: TextStyle(color: Colors.white),
       ),
     );
   }

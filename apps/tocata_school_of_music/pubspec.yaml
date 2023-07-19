@@ -9,6 +9,7 @@ environment:
 dependencies:
   authentication:
     path: ../../modules/authentication
+  dart_melty_soundfont: 1.1.7
   design_system:
     path: ../../modules/design_system
   equatable: 2.0.5

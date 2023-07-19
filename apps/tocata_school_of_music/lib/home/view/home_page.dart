@@ -1,7 +1,10 @@
+import 'package:dart_melty_soundfont/dart_melty_soundfont.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tocata_school_of_music/app/view/bloc/app_bloc.dart';
 import 'package:tocata_school_of_music/home/home.dart';
+import 'package:wl_music_school_manager/wl_music_school_manager.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,7 +33,27 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Avatar(photo: user.photo),
+            InkWell(
+              onTap: () async {
+                try {
+                  //   final midi = MidiPlayer();
+                  //   await midi.load(WLSounds.overdrivenGuitar);
+                  //   await midi.playNote(note: 1, velocity: 1);
+
+                  // Create the synthesizer.
+                  final bytes = await rootBundle.load(WLSounds.eletricGuitar);
+
+                  final synth = Synthesizer.loadByteData(
+                    bytes,
+                    SynthesizerSettings(),
+                  );
+                  debugPrint(synth.soundFont.presets.toString());
+                } catch (e) {
+                  debugPrint(e.toString());
+                }
+              },
+              child: Avatar(photo: user.photo),
+            ),
             const SizedBox(height: 4),
             Text(user.email ?? '', style: textTheme.titleLarge),
             const SizedBox(height: 4),
