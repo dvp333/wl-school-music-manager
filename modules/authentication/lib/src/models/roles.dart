@@ -1,5 +1,5 @@
 enum Role {
   admin,
-  student,
-  teacher;
+  estudante,
+  professor;
 }

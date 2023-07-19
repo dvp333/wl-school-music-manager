@@ -19,11 +19,13 @@ class SignUpPage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: BlocProvider<SignUpCubit>(
-          create: (_) => getIt<SignUpCubit>(),
-          child: const SignUpForm(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: BlocProvider<SignUpCubit>(
+            create: (_) => getIt<SignUpCubit>(),
+            child: const SignUpForm(),
+          ),
         ),
       ),
     );

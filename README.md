@@ -43,13 +43,13 @@ Flutter White label app for Music School
   - Create new email for Tocata app manager ---------->
   - Create Firebase for Tocata Manager --------------->
   - Update Firebase values in Flutter project -------->
-  - Setup Firestore ---------------------------------->
+  - Setup Firestore ----------------------------------> OK
   - Colocar AuthenticationRepository no GetIt -------->
   - Setup CrashLytics -------------------------------->
   - Setup Melos -------------------------------------->
   - Setup App Check ---------------------------------->
-  - Colocar Scroll na tela de signup ----------------->
-
+  - Colocar Scroll na tela de signup -----------------> Doing
+  - Incluir o campo "Perfil" no signup --------------->
   - Create login package ----------------------------->
   - Create Splash ------------------------------------>
   - Create Firebase app distribution ----------------->

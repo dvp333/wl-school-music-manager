@@ -1,3 +1,4 @@
+import 'package:authentication/authentication.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,6 +38,10 @@ class SignUpForm extends StatelessWidget {
             _PasswordInput(),
             const SizedBox(height: 8),
             _ConfirmPasswordInput(),
+            const SizedBox(height: 8),
+            _UserRoleInput(
+              onChanged: (selectedRole) {},
+            ),
             const SizedBox(height: 8),
             _SignUpButton(),
           ],
@@ -121,6 +126,60 @@ class _ConfirmPasswordInput extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class _UserRoleInput extends StatefulWidget {
+  const _UserRoleInput({required this.onChanged});
+
+  final void Function(Role?) onChanged;
+
+  @override
+  State<_UserRoleInput> createState() => _UserRoleInputState();
+}
+
+class _UserRoleInputState extends State<_UserRoleInput> {
+  Role selectedValue = Role.estudante;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton(
+      items: _buildItems(),
+      onChanged: _onChagedCallback,
+      value: selectedValue,
+      isExpanded: true,
+      style: const TextStyle(color: Colors.white),
+      iconEnabledColor: Colors.white,
+      dropdownColor: Colors.blue.shade800,
+      underline: Container(
+        height: 1,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<DropdownMenuItem<Role>>? _buildItems() {
+    return Role.values
+        .map(
+          (e) => DropdownMenuItem<Role>(
+            value: e,
+            child: Text('Perfil: ${e.name}'),
+          ),
+        )
+        .toList();
+  }
+
+  void _onChagedCallback(Role? role) {
+    setState(() {
+      widget.onChanged(role);
+      selectedValue = role ?? selectedValue;
+    });
   }
 }
 

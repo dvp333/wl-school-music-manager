@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:authentication/src/models/roles.dart';
 import 'package:cache/cache.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
@@ -211,7 +210,7 @@ class AuthenticationRepository {
       );
 
       final userRole = <String, String>{
-        'role_id': role?.name ?? Role.student.name
+        'role_id': role?.name ?? Role.estudante.name
       };
 
       await _db
