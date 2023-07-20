@@ -39,9 +39,7 @@ class SignUpForm extends StatelessWidget {
             const SizedBox(height: 8),
             _ConfirmPasswordInput(),
             const SizedBox(height: 8),
-            _UserRoleInput(
-              onChanged: (selectedRole) {},
-            ),
+            const _UserRoleInput(),
             const SizedBox(height: 8),
             _SignUpButton(),
           ],
@@ -130,9 +128,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
 }
 
 class _UserRoleInput extends StatefulWidget {
-  const _UserRoleInput({required this.onChanged});
-
-  final void Function(Role?) onChanged;
+  const _UserRoleInput();
 
   @override
   State<_UserRoleInput> createState() => _UserRoleInputState();
@@ -177,8 +173,8 @@ class _UserRoleInputState extends State<_UserRoleInput> {
 
   void _onChagedCallback(Role? role) {
     setState(() {
-      widget.onChanged(role);
       selectedValue = role ?? selectedValue;
+      context.read<SignUpCubit>().roleChanged(role!);
     });
   }
 }
