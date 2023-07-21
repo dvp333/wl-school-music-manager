@@ -1,0 +1,37 @@
+name: wl_school_music_manager
+
+packages:
+  - apps/**
+  - modules/**
+
+scripts:
+  test:selective_unit_test:
+    run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage --test-randomize-ordering-seed random
+    description: Run Flutter tests for a specific package in this project.
+    select-package:
+      flutter: true
+      dir-exists: test
+
+  test:
+    run: melos run test:selective_unit_test --no-select
+    description: Run all Flutter tests in this project.
+
+  repair:
+    run: melos exec -- flutter clean
+    description: Run `flutter clean` in all packages.
+
+  format:
+    run: melos exec -- flutter format --set-exit-if-changed lib test
+    description: Run `flutter format` in all packages.
+
+  analyze:
+    run: melos exec -- flutter analyze .
+    description: Run `flutter analyze` in all packages.
+
+  get:
+    run: melos exec -- flutter pub get
+
+  upgrade:
+    run: melos exec -- flutter pub upgrade
+
+  gen_coverage: melos exec -- "\$MELOS_ROOT_PATH/combine_coverage.sh"

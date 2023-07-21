@@ -1,3 +1,5 @@
+[![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
+
 # wl-school-music-manager
 Flutter White label app for Music School 
 
@@ -40,16 +42,11 @@ Flutter White label app for Music School
 # TODO:
 
 
-  - Create new email for Tocata app manager ---------->
-  - Create Firebase for Tocata Manager --------------->
-  - Update Firebase values in Flutter project -------->
-  - Setup Firestore ----------------------------------> OK
   - Colocar AuthenticationRepository no GetIt -------->
   - Setup CrashLytics -------------------------------->
   - Setup Melos -------------------------------------->
   - Setup App Check ---------------------------------->
-  - Colocar Scroll na tela de signup -----------------> Doing
-  - Incluir o campo "Perfil" no signup --------------->
+  - Incluir o campo "Perfil" no signup ---------------> Doing
   - Create login package ----------------------------->
   - Create Splash ------------------------------------>
   - Create Firebase app distribution ----------------->

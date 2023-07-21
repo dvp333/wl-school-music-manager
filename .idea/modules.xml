@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/modules/authentication/melos_authentication.iml" filepath="$PROJECT_DIR$/modules/authentication/melos_authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/cache/melos_cache.iml" filepath="$PROJECT_DIR$/modules/cache/melos_cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/design_system/melos_design_system.iml" filepath="$PROJECT_DIR$/modules/design_system/melos_design_system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/form_inputs/melos_form_inputs.iml" filepath="$PROJECT_DIR$/modules/form_inputs/melos_form_inputs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/logger/melos_logger.iml" filepath="$PROJECT_DIR$/modules/logger/melos_logger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/tocata_manager/melos_tocata_manager.iml" filepath="$PROJECT_DIR$/apps/tocata_manager/melos_tocata_manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/tocata_school_of_music/melos_tocata_school_of_music.iml" filepath="$PROJECT_DIR$/apps/tocata_school_of_music/melos_tocata_school_of_music.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/wl_music_school_manager/melos_wl_music_school_manager.iml" filepath="$PROJECT_DIR$/modules/wl_music_school_manager/melos_wl_music_school_manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_wl_school_music_manager.iml" filepath="$PROJECT_DIR$/melos_wl_school_music_manager.iml" />
+    </modules>
+  </component>
+</project>
