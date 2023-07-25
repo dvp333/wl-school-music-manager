@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.verygoodcore.tocata_school_of_music">
+    package="br.com.dtr.tocata_music">
    <application
-        android:label="tocata_school_of_music"
+        android:label="tocata_music"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

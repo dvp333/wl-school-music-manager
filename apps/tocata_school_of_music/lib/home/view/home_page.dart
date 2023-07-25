@@ -1,4 +1,5 @@
 import 'package:dart_melty_soundfont/dart_melty_soundfont.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,12 @@ class HomePage extends StatelessWidget {
     final user = context.select((AppBloc bloc) => bloc.state.user);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        backgroundColor: Colors.blue.shade900,
+        title: Image.asset(
+          TocataImages.logo,
+          package: TocataImages.packageName,
+          height: 30,
+        ),
         actions: <Widget>[
           IconButton(
             key: const Key('homePage_logout_iconButton'),
@@ -54,10 +60,12 @@ class HomePage extends StatelessWidget {
               },
               child: Avatar(photo: user.photo),
             ),
+            const SizedBox(height: 30),
+            Text('Bem-vindo', style: textTheme.titleLarge),
             const SizedBox(height: 4),
-            Text(user.email ?? '', style: textTheme.titleLarge),
+            Text(user.name ?? '', style: textTheme.titleLarge),
             const SizedBox(height: 4),
-            Text(user.name ?? '', style: textTheme.headlineSmall),
+            Text(user.email ?? '', style: textTheme.titleSmall),
           ],
         ),
       ),

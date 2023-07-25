@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cache/cache.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -159,15 +160,18 @@ class AuthenticationRepository {
     firebase_auth.FirebaseAuth? firebaseAuth,
     GoogleSignIn? googleSignIn,
     FirebaseFirestore? db,
+    FirebaseApp? app,
   })  : _cache = cache ?? CacheClient(),
         _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn.standard(),
-        _db = db ?? FirebaseFirestore.instance;
+        _db = db ?? FirebaseFirestore.instance,
+        _app = app;
 
   final CacheClient _cache;
   final firebase_auth.FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _db;
+  final FirebaseApp? _app;
 
   /// Whether or not the current environment is web
   /// Should only be overriden for testing purposes. Otherwise,
@@ -202,12 +206,19 @@ class AuthenticationRepository {
   ///
   /// Throws a [SignUpWithEmailAndPasswordFailure] if an exception occurs.
   Future<void> signUp(
-      {required String email, required String password, Role? role}) async {
+      {required String email,
+      required String password,
+      Role? role,
+      String? name}) async {
     try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
+      final createUserAuth = firebase_auth.FirebaseAuth.instanceFor(app: _app!);
+
+      final credential = await createUserAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      await credential.user?.updateDisplayName(name);
 
       final userRole = <String, String>{
         'role_id': role?.name ?? Role.estudante.name
@@ -222,6 +233,16 @@ class AuthenticationRepository {
     } catch (_) {
       throw const SignUpWithEmailAndPasswordFailure();
     }
+  }
+
+  Future<List<Object?>> getUserRoles(String userId) async {
+    QuerySnapshot querySnapshot = await _db.collection('user_roles').get();
+    // Get data from docs and convert map to List
+    final userRoles = querySnapshot.docs
+        .where((doc) => doc.id == userId)
+        .map((doc) => (doc.data() as Map)['role_id'])
+        .toList();
+    return userRoles;
   }
 
   /// Starts the Sign In with Google Flow.

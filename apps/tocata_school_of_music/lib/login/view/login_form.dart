@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:tocata_school_of_music/login/login.dart';
-import 'package:tocata_school_of_music/sign_up/sign_up.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -43,8 +42,8 @@ class LoginForm extends StatelessWidget {
                 _LoginButton(),
                 // const SizedBox(height: 8),
                 // _GoogleLoginButton(),
-                const SizedBox(height: 4),
-                _SignUpButton(),
+                // const SizedBox(height: 4),
+                // _SignUpButton(),
               ],
             ),
           ),
@@ -133,7 +132,7 @@ class _LoginButton extends StatelessWidget {
                     : null,
                 child: Text(
                   'LOGIN',
-                  style: TextStyle(color: Colors.blue.shade900),
+                  style: TextStyle(color: Colors.blue.shade300),
                 ),
               );
       },
@@ -159,21 +158,6 @@ class _GoogleLoginButton extends StatelessWidget {
       ),
       icon: const Icon(FontAwesomeIcons.google, color: Colors.white),
       onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
-    );
-  }
-}
-
-class _SignUpButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return TextButton(
-      key: const Key('loginForm_createAccount_flatButton'),
-      onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
-      child: const Text(
-        'CREATE ACCOUNT',
-        style: TextStyle(color: Colors.white),
-      ),
     );
   }
 }

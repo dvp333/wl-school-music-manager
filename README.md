@@ -1,5 +1,9 @@
 [![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
 
+# Bootstraping
+
+  run `melos bootstrap`
+
 # wl-school-music-manager
 Flutter White label app for Music School 
 
@@ -17,7 +21,7 @@ Flutter White label app for Music School
 
      ┌────────────────────────┐
      │                        │
-     │   app sample-app       │
+     │     app other-app      │
      │                        │
      └───────────┬────────────┘
                  │
@@ -42,17 +46,23 @@ Flutter White label app for Music School
 # TODO:
 
 
-  - Colocar AuthenticationRepository no GetIt -------->
-  - Setup CrashLytics -------------------------------->
-  - Setup Melos -------------------------------------->
-  - Setup App Check ---------------------------------->
-  - Incluir o campo "Perfil" no signup ---------------> Doing
-  - Create login package ----------------------------->
+  ##############
+  ## Features ##
+  ##############
+
+  - Incluir o campo "Perfil" no signup ---------------> OK
+  - Setup Melos --------------------------------------> OK
+  - Create login package -----------------------------> Cancelado
+  - Create App admin to add new users ----------------> OK
+  - Verificar perfil de admin no login do manager ----> Doing
+    * Alterar usuário reativo --------------> OK
+    * Testar ususário sem role admin -------> 
+  - Create menu to add new user ----------------------> Doing
+  - Call new usser page ------------------------------>
+  - Permitir associar mais de um perfil -------------->
   - Create Splash ------------------------------------>
-  - Create Firebase app distribution ----------------->
-  - Create Ap admin to add new users ----------------->
-  - Find package to play midi ------------------------> later
-  - Find midi with guitar notes sound ----------------> later
+  - Implement instruments home menu ------------------>
+  - Link app with with guitar game ------------------->
   - Build Guitar game levels ------------------------->
 
       * Etapa 1 -> Somente corda E. Mostrar as oitavas em uma cor e outra cor para a nota selecionada.
@@ -61,6 +71,21 @@ Flutter White label app for Music School
         - nivel 4 ----------> casas 13 a 17
         - nivel 5 ----------> casas 17 a 22
         - nivel 6 ----------> todas as casas
+      * Intervalos
+        - Terça maior
+        - Terça menor
+        - Quinta justa
+      * Sustenidos dos Tons (Armadura)
+      * Bemol dos Tons (Armadura)
 
-  - Implement instruments home menu ------------------>
-  - Link app with with guitar game ------------------->
+
+
+  ################
+  ## Tech debit ##
+  ################
+
+  - Colocar AuthenticationRepository no GetIt -------->
+  - Setup CrashLytics -------------------------------->
+  - Setup App Check ---------------------------------->
+  - Create Firebase app distribution ----------------->
+ 

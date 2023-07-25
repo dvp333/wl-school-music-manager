@@ -199,7 +199,7 @@ class _SignUpButton extends StatelessWidget {
                     : null,
                 child: Text(
                   'SIGN UP',
-                  style: TextStyle(color: Colors.blue.shade900),
+                  style: TextStyle(color: Colors.blue.shade300),
                 ),
               );
       },

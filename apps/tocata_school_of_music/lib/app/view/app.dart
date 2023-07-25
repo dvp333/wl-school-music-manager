@@ -3,9 +3,9 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tocata_school_of_music/app/injection/injector.dart';
+import 'package:tocata_school_of_music/app/l10n/l10n.dart';
 import 'package:tocata_school_of_music/app/routes/routes.dart';
 import 'package:tocata_school_of_music/app/view/bloc/app_bloc.dart';
-import 'package:tocata_school_of_music/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
