@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tocata_manager/app/view/bloc/app_bloc.dart';
 import 'package:tocata_manager/features/sign_up/sign_up.dart';
+import 'package:tocata_manager/features/user_list/view/user_list_page.dart';
 import 'package:tocata_manager/firebase_options.dart';
 
 class HomePage extends StatelessWidget {
@@ -49,41 +50,74 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 4),
             Text(user.email ?? '', style: textTheme.titleSmall),
             const SizedBox(height: 40),
-            InkWell(
-              onTap: () {
-                try {
-                  Firebase.initializeApp(
-                    name: 'secondary',
-                    options: DefaultFirebaseOptions.currentPlatform,
-                  ).then(
-                    (app) async {
-                      await Navigator.of(context)
-                          .push<void>(SignUpPage.route(app));
-                      unawaited(app.delete());
-                    },
-                  );
-                } catch (e) {
-                  // TODO: send to Crashlytics.
-                  print(e);
-                }
-              },
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.add_reaction_outlined,
-                        color: Colors.blue.shade900,
-                        size: 48,
-                      ),
-                      Text('Criar usuário', style: textTheme.titleLarge),
-                    ],
-                  ),
-                ),
-              ),
+            Wrap(
+              children: [
+                _criarUsuario(context),
+                _listarUsuarios(context),
+              ],
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _listarUsuarios(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push<void>(UserListPage.route());
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              Icon(
+                Icons.list_alt_rounded,
+                color: Colors.blue.shade900,
+                size: 48,
+              ),
+              Text('Listar usuários', style: textTheme.titleLarge),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _criarUsuario(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return InkWell(
+      onTap: () {
+        try {
+          Firebase.initializeApp(
+            name: 'secondary',
+            options: DefaultFirebaseOptions.currentPlatform,
+          ).then(
+            (app) async {
+              await Navigator.of(context).push<void>(SignUpPage.route(app));
+              unawaited(app.delete());
+            },
+          );
+        } catch (e) {
+          // TODO: send to Crashlytics.
+          print(e);
+        }
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              Icon(
+                Icons.add_reaction_outlined,
+                color: Colors.blue.shade900,
+                size: 48,
+              ),
+              Text('Criar usuário', style: textTheme.titleLarge),
+            ],
+          ),
         ),
       ),
     );

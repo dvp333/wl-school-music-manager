@@ -54,11 +54,13 @@ Flutter White label app for Music School
   - Setup Melos --------------------------------------> OK
   - Create login package -----------------------------> Cancelado
   - Create App admin to add new users ----------------> OK
-  - Verificar perfil de admin no login do manager ----> Doing
+  - Verificar perfil de admin no login do manager ----> OK
     * Alterar usuário reativo --------------> OK
-    * Testar ususário sem role admin -------> 
-  - Create menu to add new user ----------------------> Doing
-  - Call new usser page ------------------------------>
+    * Testar ususário sem role admin -------> OK
+  - Create menu to add new user ----------------------> OK
+  - Call new usser page ------------------------------> OK
+  - Implement User list ------------------------------> Doing
+  - Allow delete user from list ---------------------->
   - Permitir associar mais de um perfil -------------->
   - Create Splash ------------------------------------>
   - Implement instruments home menu ------------------>
