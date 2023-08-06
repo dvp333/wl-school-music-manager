@@ -1,0 +1,48 @@
+name: fretz
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  equatable: 2.0.5
+  firebase_core: 2.15.0
+  firebase_crashlytics: 3.3.4
+  firebase_remote_config: 4.2.4
+  flow_builder: ^0.0.9
+  flutter:
+    sdk: flutter
+  flutter_bloc: 8.1.3
+  flutter_dotenv: 5.0.2
+  flutter_localizations:
+    sdk: flutter
+  get_it: 7.6.0
+  intl: ^0.18.0
+  shared_preferences: 2.0.15  
+
+dev_dependencies:
+  bloc_test: ^9.1.2
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+  very_good_analysis: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/music/
+    - assets/sfx/
+    - lib/app/environment/assets/dev/
+    - lib/app/environment/assets/prod/
+    - lib/app/environment/assets/stg/
+
+  fonts:
+    - family: Permanent Marker
+      fonts:
+        - asset: assets/fonts/Permanent_Marker/PermanentMarker-Regular.ttf
+  

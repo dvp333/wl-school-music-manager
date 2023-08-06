@@ -51,6 +51,41 @@
                 "--flavor", "production",
                 "--target", "lib/main_production.dart"
             ]
+        },
+        {
+            "name": "Game Template (debug prod)",
+            "cwd": "apps/games/game_template",
+            "request": "launch",
+            "type": "dart",
+            "program": "apps/games/game_template/lib/main.dart",
+            "flutterMode": "debug",
+            "args": [
+                // "--flavor", "production",
+                "--target", "lib/main.dart"
+            ]
+        },
+        {
+            "name": "Fretz (debug prod)",
+            "cwd": "apps/games/fretz",
+            "request": "launch",
+            "type": "dart",
+            "program": "apps/games/fretz/lib/main_production.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor", "production",
+                "--target", "lib/main_production.dart"
+            ]
+        },
+        {
+            "name": "Fretz Old (debug prod)",
+            "cwd": "apps/games/fretz_old",
+            "request": "launch",
+            "type": "dart",
+            "program": "apps/games/fretz)old/lib/main.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--target", "lib/main.dart"
+            ]
         }
     ]
 }

@@ -11,7 +11,22 @@ class UserListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Text('Olhaaaaa'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.list_alt_rounded,
+              color: Colors.blue.shade900,
+              size: 80,
+            ),
+            const Text(
+              'Em breve...',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,6 @@
 name: tocata_school_of_music
 description: Sample styled instance App of the white label
-version: 1.0.0+1
+version: 0.0.0+1
 publish_to: none
 
 environment:

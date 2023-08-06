@@ -235,6 +235,21 @@ class AuthenticationRepository {
     }
   }
 
+  // void getUsers() async {
+  //   var app = FirebaseAdmin.instance.initializeApp(AppOptions(
+  //       credential: Credentials.applicationDefault()!,
+  //       projectId: _app!.options.projectId));
+
+  //   var result = await app.auth().listUsers(10, 'ds');
+  //   var users = result.users;
+
+  //   for (var u in users) {
+  //     print(u.email);
+  //   }
+
+  //   // TODO: continuar daqui e ver se conecta com o sdk admin
+  // }
+
   Future<List<Object?>> getUserRoles(String userId) async {
     QuerySnapshot querySnapshot = await _db.collection('user_roles').get();
     // Get data from docs and convert map to List

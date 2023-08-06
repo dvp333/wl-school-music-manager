@@ -38,6 +38,15 @@ class LoginForm extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
+                const Text(
+                  'Manager',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox(height: 16),
                 const _EmailInput(isValidationEnabled: false),
                 const SizedBox(height: 8),
                 const _PasswordInput(isValidationEnabled: false),

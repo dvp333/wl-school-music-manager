@@ -59,9 +59,11 @@ Flutter White label app for Music School
     * Testar ususário sem role admin -------> OK
   - Create menu to add new user ----------------------> OK
   - Call new usser page ------------------------------> OK
-  - Implement User list ------------------------------> Doing
+  - Implement User list ------------------------------> Paused
   - Allow delete user from list ---------------------->
   - Permitir associar mais de um perfil -------------->
+  - Split frets into an app and a package ------------> Doing
+  - Call guitar_games from home ---------------------->
   - Create Splash ------------------------------------>
   - Implement instruments home menu ------------------>
   - Link app with with guitar game ------------------->
@@ -82,12 +84,10 @@ Flutter White label app for Music School
 
 
 
-  ################
+  ## ##############
   ## Tech debit ##
-  ################
+  ## ##############
 
-  - Colocar AuthenticationRepository no GetIt -------->
   - Setup CrashLytics -------------------------------->
   - Setup App Check ---------------------------------->
-  - Create Firebase app distribution ----------------->
  
