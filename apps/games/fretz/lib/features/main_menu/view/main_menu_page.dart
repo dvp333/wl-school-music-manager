@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fretz/core/design_system/components/gradient_button.dart';
 import 'package:fretz/core/design_system/images/fretz_images.dart';
+import 'package:fretz/features/level_selection/view/level_selection_page.dart';
 
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({super.key});
@@ -20,7 +21,7 @@ class MainMenuPage extends StatelessWidget {
             const Text('Fretz', style: TextStyle(fontSize: 70)),
             const Image(image: AssetImage(FretzImages.mainMenuBackgorund)),
             const SizedBox(height: 10),
-            _playButton(),
+            _playButton(context),
             const SizedBox(height: 15),
             _settingsButtons(),
           ],
@@ -29,11 +30,13 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 
-  Widget _playButton() {
+  Widget _playButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: GradientButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(LevelSelecetionPage.route());
+        },
         child: const Text(
           'Play',
           style: TextStyle(
