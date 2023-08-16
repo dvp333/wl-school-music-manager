@@ -23,9 +23,11 @@ class FreatboardMappingLevelsPages extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 30),
-              const Text(
-                'Mapeamento do braço',
-                style: TextStyle(fontSize: 30),
+              const FittedBox(
+                child: Text(
+                  'Mapeamento do braço',
+                  style: TextStyle(fontSize: 30),
+                ),
               ),
               const SizedBox(height: 60),
               GradientButton(

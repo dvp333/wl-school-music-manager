@@ -1,6 +1,7 @@
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fretz/app/app_lifecycle/app_lifecycle.dart';
 import 'package:fretz/app/injection/injector.dart';
 import 'package:fretz/app/routes/routes.dart';
 import 'package:fretz/app/view/bloc/app_bloc.dart';
@@ -33,19 +34,21 @@ class _AppViewState extends State<AppView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
-              displayColor: Colors.white,
-              fontFamily: 'Permanent Marker',
-            ),
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: FlowBuilder<AppStatus>(
-        state: context.select((AppBloc bloc) => bloc.state.status),
-        onGeneratePages: onGenerateAppViewPages,
+    return AppLifecycleObserver(
+      child: MaterialApp(
+        theme: ThemeData(
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white,
+                displayColor: Colors.white,
+                fontFamily: 'Permanent Marker',
+              ),
+        ),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: FlowBuilder<AppStatus>(
+          state: context.select((AppBloc bloc) => bloc.state.status),
+          onGeneratePages: onGenerateAppViewPages,
+        ),
       ),
     );
   }

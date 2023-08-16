@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fretz/core/design_system/fretz_colors.dart';
 
 class GradientButton extends StatelessWidget {
   const GradientButton({
@@ -8,7 +9,7 @@ class GradientButton extends StatelessWidget {
     this.width = double.infinity,
     this.onPressed,
     this.gradient = const LinearGradient(
-      colors: [Color(0xFFE33A61), Color(0xFFD5B51C)],
+      colors: [FretzColors.redGradient, FretzColors.yellowGradient],
     ),
   });
 

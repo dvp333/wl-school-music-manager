@@ -10,6 +10,40 @@ A Very Good Project created by Very Good CLI.
 
 ---
 
+
+
+## Tasks
+
+
+    - Mandar sobre robôs para fernanda
+    - Responder email do job de fora
+
+    - Atualizar icone ------------------------------>
+    - Corrigir bugs -------------------------------->
+        - Botão sair não sai do jogo --------------->
+    - Criar conta de developer na Google Play ------>
+    - Criar leader boards -------------------------->
+    - add leaderboards ----------------------------->
+    - add ads -------------------------------------->
+    - Add localizations ---------------------------->
+    - righ answer animation ------------------------> OK
+    - implement lives ------------------------------> OK
+    - bug of tapping the answer twice --------------> OK
+    - set dismissable false to dialog --------------> OK
+    - implement points -----------------------------> OK
+    - implements game over dialog ------------------> 
+        - Game Over is not backing to home --------->
+    - implement game play summary ------------------>
+    - Implement Bonnus dialog ---------------------->
+    - implement ask for AD video for extra life ---->
+
+
+
+
+
+
+
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:

@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:fretz/core/design_system/animations/confetti.dart';
 import 'package:fretz/core/design_system/components/gradient_button.dart';
+import 'package:fretz/core/design_system/fretz_colors.dart';
 import 'package:fretz/core/domain/models/guitar_strings.dart';
 import 'package:fretz/core/domain/models/music_note.dart';
 import 'package:fretz/features/discover_the_note/domain/usecases/get_note.dart';
@@ -34,6 +36,17 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
 
   final random = Random();
 
+  bool _duringCelebration = false;
+  bool _hasAnswered = false;
+
+  int _score = 0;
+  double _lives = 3;
+  int _rightAnswersCount = 0;
+
+  static const _pointsPerRightAnswer = 10;
+  static const _rightAnswerBonusNumber = 7;
+  static const _pointsPerBonus = 50;
+
   @override
   void initState() {
     super.initState();
@@ -42,6 +55,8 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
 
   void _generateNextQuestion() {
     setState(() {
+      _duringCelebration = false;
+      _hasAnswered = false;
       final stringsCount = GuitarString.values.length;
       currentString = GuitarString.values[random.nextInt(stringsCount)];
       currentFret = random.nextInt(fretsCount + 1);
@@ -62,219 +77,314 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
     });
   }
 
+  late BuildContext _rootBuildContext;
+
   @override
   Widget build(BuildContext context) {
+    _rootBuildContext = context;
     final style = Theme.of(context)
         .textTheme
         .headlineMedium!
         .copyWith(color: Colors.white);
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+    return IgnorePointer(
+      ignoring: _hasAnswered,
+      child: Scaffold(
         backgroundColor: Colors.black,
-        elevation: 0,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '245245',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          )
-        ],
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 8),
-          child: Row(
-            children: [
-              Image(
-                image: AssetImage('assets/images/guitar_life.png'),
-                height: 30,
-              ),
-              Image(
-                image: AssetImage('assets/images/guitar_life.png'),
-                height: 30,
-              ),
-              Image(
-                image: AssetImage('assets/images/guitar_life.png'),
-                height: 30,
-              )
-            ],
-          ),
-        ),
-        leadingWidth: 200,
-      ),
-      body: Stack(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 150),
-            child: Image(image: AssetImage('assets/images/bg.png')),
-          ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(0),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          elevation: 0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Text(
-                    'Descubra a nota',
-                    style: style,
+                    _score.toString(),
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Stack(
-                    children: [
-                      const GuitarFretBoard(),
-                      GuitarFretBoard(
-                        backgroundColor: Colors.transparent,
-                        fretColor: Colors.transparent,
-                        markerColor: Colors.transparent,
-                        selectedString: currentString,
-                        selectFret: currentFret,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 60),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                ],
+              ),
+            )
+          ],
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Row(
+              children: _buildLives(),
+            ),
+          ),
+          leadingWidth: 200,
+        ),
+        body: Stack(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 150),
+              child: Image(image: AssetImage('assets/images/bg.png')),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Descubra a nota',
+                      style: style,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Stack(
                       children: [
-                        Expanded(
-                          child: _FretzCard(
-                            title: 'Corda',
-                            content: currentString?.number ?? '',
-                            complement: '(${currentString?.cipher})',
-                          ),
-                        ),
-                        const SizedBox(width: 26),
-                        Expanded(
-                          child: _FretzCard(
-                            title: 'Casa',
-                            content: currentFret?.toString() ?? '',
-                          ),
+                        const GuitarFretBoard(),
+                        GuitarFretBoard(
+                          backgroundColor: Colors.transparent,
+                          fretColor: Colors.transparent,
+                          markerColor: Colors.transparent,
+                          selectedString: currentString,
+                          selectFret: currentFret,
                         ),
                       ],
                     ),
-                  ),
-                  // _FretzCard(
-                  //   title: 'Nota',
-                  //   content: currentNote,
-                  // ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                    child: NotesKeyboard(
-                      rightAnswer: currentNote,
-                      showAnswer: true,
-                      onRightAnswerGiven: () => showNextQuestion(true),
-                      onWrongAnswerGiven: () => showNextQuestion(false),
+                    const SizedBox(height: 60),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: _FretzCard(
+                              title: '${currentString?.number} Corda',
+                              content: currentString?.cipher ?? '',
+                              complement: '',
+                            ),
+                          ),
+                          const SizedBox(width: 28),
+                          Expanded(
+                            child: _FretzCard(
+                              title: 'Casa',
+                              content: currentFret?.toString() ?? '',
+                              complement: '',
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 16.0),
-                  //   child: SizedBox(
-                  //     width: double.infinity,
-                  //     height: 50.0,
-                  //     child: ElevatedButton(
-                  //         onPressed: (_timer?.isActive ?? true)
-                  //             ? null
-                  //             : _generateNextQuestion,
-                  //         child: const Text('Próximo')),
-                  //   ),
-                  // )
-                ],
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      child: NotesKeyboard(
+                        rightAnswer: currentNote,
+                        showAnswer: true,
+                        onTap: () => setState(() => _hasAnswered = true),
+                        onRightAnswerGiven: handleRightAnswer,
+                        onWrongAnswerGiven: handleWrongAnswer,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+            SizedBox.expand(
+              child: AnimatedOpacity(
+                opacity: _duringCelebration ? 1 : 0,
+                duration: const Duration(milliseconds: 300),
+                child: IgnorePointer(
+                  child: Confetti(
+                    isStopped: !_duringCelebration,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  void showNextQuestion(bool hasAnsweredRight) {
-    unawaited(
-      showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
-              side: const BorderSide(
-                color: Colors.white,
-                width: 2,
+  void handleRightAnswer() {
+    setState(() {
+      _duringCelebration = true;
+      _score += _pointsPerRightAnswer;
+      _rightAnswersCount++;
+
+      if (_rightAnswersCount >= _rightAnswerBonusNumber) {
+        _score += _pointsPerBonus;
+      }
+    });
+    showNextQuestionDialog('Parabéns!');
+  }
+
+  void handleWrongAnswer() {
+    setState(() {
+      _rightAnswersCount = 0;
+      _lives--;
+    });
+    if (_lives <= 0) {
+      _showGameOverDialog();
+    } else {
+      showNextQuestionDialog('Que pena, não foi dessa vez.');
+    }
+  }
+
+  void showNextQuestionDialog(String title) {
+    Future.delayed(const Duration(milliseconds: 300), () {
+      unawaited(
+        showDialog<void>(
+          barrierDismissible: false,
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+                side: const BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
               ),
-            ),
-            title: Text(
-              hasAnsweredRight ? 'Parabéns!' : 'Não foi dessa vez ;)',
-              textAlign: TextAlign.center,
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: GradientButton(
-                    onPressed: () {
-                      _generateNextQuestion();
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text(
-                      'Próxima nota',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+              title: Text(
+                title,
+                textAlign: TextAlign.center,
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: GradientButton(
+                      onPressed: () {
+                        _generateNextQuestion();
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        'Próxima nota',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            actions: const <Widget>[
-              // TextButton(
-              //   style: TextButton.styleFrom(
-              //     textStyle: Theme.of(context).textTheme.labelLarge,
-              //   ),
-              //   child: const Text('Disable'),
-              //   onPressed: () {
-              //     Navigator.of(context).pop();
-              //   },
-              // ),
-              // TextButton(
-              //   style: TextButton.styleFrom(
-              //     textStyle: Theme.of(context).textTheme.labelLarge,
-              //   ),
-              //   child: const Text('Enable'),
-              //   onPressed: () {
-              //     Navigator.of(context).pop();
-              //   },
-              // ),
-            ],
-          );
-        },
-      ),
-    );
+                ],
+              ),
+              actions: const <Widget>[],
+            );
+          },
+        ),
+      );
+    });
   }
 
   void doNothingForNow() {}
+
+  List<Widget> _buildLives() {
+    final widgets = <Widget>[];
+
+    for (var i = 0; i < _lives; i++) {
+      widgets.add(
+        const Image(
+          image: AssetImage('assets/images/guitar_life.png'),
+          height: 30,
+        ),
+      );
+    }
+
+    return widgets;
+  }
+
+  void _showGameOverDialog() {
+    Future.delayed(const Duration(milliseconds: 300), () {
+      unawaited(
+        showDialog<void>(
+          barrierDismissible: false,
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+                side: const BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              title: const Text(
+                'GAME OVER',
+                textAlign: TextAlign.center,
+              ),
+              content: Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      height: 50,
+                      child: GradientButton(
+                        onPressed: () {
+                          _restartGame();
+                          _generateNextQuestion();
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          'Reiniciar',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: SizedBox(
+                      height: 50,
+                      child: GradientButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          Navigator.of(_rootBuildContext)
+                              .popUntil((route) => route.isFirst);
+                        },
+                        child: const Text(
+                          'Sair',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              actions: const <Widget>[],
+            );
+          },
+        ),
+      );
+    });
+  }
+
+  void _restartGame() {
+    setState(() {
+      _score = 0;
+      _lives = 3;
+      _rightAnswersCount = 0;
+    });
+  }
 }
 
 class _FretzCard extends StatelessWidget {
   const _FretzCard({
     required this.title,
     required this.content,
-    this.complement = '',
+    required this.complement,
   });
 
   final String title;
@@ -288,7 +398,7 @@ class _FretzCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: const LinearGradient(
-          colors: [Color(0xFFD5B51C), Color(0xFFE33A61)],
+          colors: [FretzColors.yellowGradient, FretzColors.redGradient],
         ),
         boxShadow: const [
           BoxShadow(
@@ -335,11 +445,13 @@ class NotesKeyboard extends StatefulWidget {
     required this.onWrongAnswerGiven,
     super.key,
     this.showAnswer = false,
+    this.onTap,
   });
 
   final String rightAnswer;
   final VoidCallback onRightAnswerGiven;
   final VoidCallback onWrongAnswerGiven;
+  final VoidCallback? onTap;
   final bool showAnswer;
 
   @override
@@ -384,7 +496,8 @@ class _NotesKeyboardState extends State<NotesKeyboard> {
                       Colors.white,
                     ),
                   ),
-            onPressed: () => setState(() {
+            onPressed: () {
+              widget.onTap?.call();
               selectedNote = MusicNote.values[index].cipher;
               final hasAnsweredRight = selectedNote == widget.rightAnswer;
               final void Function() action;
@@ -393,11 +506,13 @@ class _NotesKeyboardState extends State<NotesKeyboard> {
               } else {
                 action = () => widget.onWrongAnswerGiven();
               }
-              Future.delayed(const Duration(seconds: 1), () {
+              Future.delayed(const Duration(milliseconds: 300), () {
                 action();
-                selectedNote = '';
+                setState(() {
+                  selectedNote = '';
+                });
               });
-            }),
+            },
             child: GradientText(
               MusicNote.values[index].cipher,
               style: const TextStyle(
@@ -407,9 +522,9 @@ class _NotesKeyboardState extends State<NotesKeyboard> {
               colors: hasAnsweredQuestion
                   ? [Colors.white, Colors.white]
                   : [
-                      Colors.redAccent.shade200,
-                      Colors.yellowAccent.shade700,
-                      //add mroe colors here.
+                      FretzColors.redGradient,
+                      FretzColors.yellowGradient,
+                      //add more colors here.
                     ],
             ),
           );

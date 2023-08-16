@@ -33,41 +33,51 @@ class LevelSelecetionPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(FreatboardMappingLevelsPages.route());
                 },
-                child: const Text(
-                  'Mapeamento do braço',
-                  style: TextStyle(fontSize: 25),
+                child: const FittedBox(
+                  child: Text(
+                    'Mapeamento do braço',
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
               const GradientButton(
                 // onPressed: () {},
-                child: Text(
-                  'Intervalos de 3 maior',
-                  style: TextStyle(fontSize: 25),
+                child: FittedBox(
+                  child: Text(
+                    'Intervalos de 3 maior',
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
               const GradientButton(
                 // onPressed: () {},
-                child: Text(
-                  'Intervalos de quarta',
-                  style: TextStyle(fontSize: 25),
+                child: FittedBox(
+                  child: Text(
+                    'Intervalos de quarta',
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
               const GradientButton(
                 // onPressed: () {},
-                child: Text(
-                  'Intervalos de quinta',
-                  style: TextStyle(fontSize: 25),
+                child: FittedBox(
+                  child: Text(
+                    'Intervalos de quinta',
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
               const GradientButton(
                 // onPressed: () {},
-                child: Text(
-                  'Intervalos de 3 menor',
-                  style: TextStyle(fontSize: 25),
+                child: FittedBox(
+                  child: Text(
+                    'Intervalos de 3 menor',
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               ),
             ],
