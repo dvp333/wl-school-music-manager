@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fretz/core/design_system/components/gradient_button.dart';
-import 'package:fretz/features/discover_the_note/presentation/view/discover_the_note_page.dart';
+import 'package:fretz/features/freatboard_mapping_levels/view/guitar_string_selection_page.dart';
 
 class FreatboardMappingLevelsPages extends StatelessWidget {
   const FreatboardMappingLevelsPages({super.key});
@@ -32,7 +32,10 @@ class FreatboardMappingLevelsPages extends StatelessWidget {
               const SizedBox(height: 60),
               GradientButton(
                 onPressed: () {
-                  Navigator.of(context).push(DiscoverTheNotePage.route());
+                  // Navigator.of(context)
+                  //     .push(DiscoverTheNotePage.route(GuitarString.primeira));
+                  Navigator.of(context)
+                      .push(GuitarStringSelectationPage.route());
                 },
                 child: const Text(
                   'Descubra a nota',
