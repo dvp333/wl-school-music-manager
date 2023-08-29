@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fretz/core/design_system/components/gradient_button.dart';
 import 'package:fretz/features/freatboard_mapping_levels/view/guitar_string_selection_page.dart';
+import 'package:fretz/l10n/l10n.dart';
 
 class FreatboardMappingLevelsPages extends StatelessWidget {
   const FreatboardMappingLevelsPages({super.key});
@@ -14,6 +15,7 @@ class FreatboardMappingLevelsPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -23,10 +25,10 @@ class FreatboardMappingLevelsPages extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 30),
-              const FittedBox(
+              FittedBox(
                 child: Text(
-                  'Mapeamento do braço',
-                  style: TextStyle(fontSize: 30),
+                  l10n.fretboardMappingSelectionTitle,
+                  style: const TextStyle(fontSize: 30),
                 ),
               ),
               const SizedBox(height: 60),
@@ -37,17 +39,17 @@ class FreatboardMappingLevelsPages extends StatelessWidget {
                   Navigator.of(context)
                       .push(GuitarStringSelectationPage.route());
                 },
-                child: const Text(
-                  'Descubra a nota',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  l10n.fretboardMappingSelectionWhatsTheNote,
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
               const SizedBox(height: 15),
-              const GradientButton(
+              GradientButton(
                 // onPressed: () {},
                 child: Text(
-                  'Descubra a casa',
-                  style: TextStyle(fontSize: 25),
+                  l10n.fretboardMappingSelectionWhatsTheFret,
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
             ],

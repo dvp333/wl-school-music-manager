@@ -9,6 +9,7 @@ import 'package:fretz/features/discover_the_note/domain/usecases/get_note.dart';
 import 'package:fretz/features/discover_the_note/presentation/view/widgets/fretz_card.dart';
 import 'package:fretz/features/discover_the_note/presentation/view/widgets/guitar_freatboard.dart';
 import 'package:fretz/features/discover_the_note/presentation/view/widgets/notes_keyboard.dart';
+import 'package:fretz/l10n/l10n.dart';
 
 class DiscoverTheNotePage extends StatefulWidget {
   const DiscoverTheNotePage({super.key, this.string});
@@ -141,7 +142,7 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Descubra a nota',
+                      context.l10n.discoverTheNoteTitle,
                       style: style,
                     ),
                     const SizedBox(
@@ -167,7 +168,8 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
                         children: [
                           Expanded(
                             child: FretzCard(
-                              title: '${currentString?.number} Corda',
+                              title:
+                                  '${currentString?.number} ${context.l10n.discoverTheNoteString}',
                               content: currentString?.cipher ?? '',
                               complement: '',
                             ),
@@ -175,7 +177,7 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
                           const SizedBox(width: 28),
                           Expanded(
                             child: FretzCard(
-                              title: 'Casa',
+                              title: context.l10n.discoverTheNoteFret,
                               content: currentFret?.toString() ?? '',
                               complement: '',
                             ),
@@ -225,7 +227,7 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
         _score += _pointsPerBonus;
       }
     });
-    await showNextQuestionDialog('Parabéns!');
+    await showNextQuestionDialog(context.l10n.discoverTheNoteCongrats);
   }
 
   Future<void> handleWrongAnswer() async {
@@ -236,7 +238,7 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
     if (_lives <= 0) {
       await _showGameOverDialog();
     } else {
-      await showNextQuestionDialog('Que pena, não foi dessa vez.');
+      await showNextQuestionDialog(context.l10n.discoverTheNoteSorry);
     }
   }
 
@@ -269,9 +271,9 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
                     _generateNextQuestion();
                     Navigator.of(context).pop();
                   },
-                  child: const Text(
-                    'Próxima nota',
-                    style: TextStyle(
+                  child: Text(
+                    context.l10n.discoverTheNoteNextNote,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -318,8 +320,8 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
               width: 2,
             ),
           ),
-          title: const Text(
-            'GAME OVER',
+          title: Text(
+            context.l10n.discoverTheNoteGameOver,
             textAlign: TextAlign.center,
           ),
           content: Row(
@@ -333,10 +335,10 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
                       _generateNextQuestion();
                       Navigator.of(context).pop();
                     },
-                    child: const FittedBox(
+                    child: FittedBox(
                       child: Text(
-                        'Reiniciar',
-                        style: TextStyle(
+                        context.l10n.discoverTheNoteRestart,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -355,9 +357,9 @@ class _DiscoverTheNotePageState extends State<DiscoverTheNotePage> {
                       Navigator.of(_rootBuildContext)
                           .popUntil((route) => route.isFirst);
                     },
-                    child: const Text(
-                      'Sair',
-                      style: TextStyle(
+                    child: Text(
+                      context.l10n.discoverTheNoteQuit,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

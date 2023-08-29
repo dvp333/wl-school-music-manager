@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fretz/core/design_system/components/gradient_button.dart';
 import 'package:fretz/features/freatboard_mapping_levels/view/freatboard_mapping_levels_page.dart';
+import 'package:fretz/l10n/l10n.dart';
 
 class LevelSelecetionPage extends StatelessWidget {
   const LevelSelecetionPage({super.key});
@@ -14,6 +15,7 @@ class LevelSelecetionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -22,10 +24,10 @@ class LevelSelecetionPage extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
-              const SizedBox(height: 30),
-              const Text(
-                'Select level',
-                style: TextStyle(fontSize: 45),
+              const SizedBox(height: 50),
+              Text(
+                l10n.levelSelectionWhatAreWeGonnaPlay,
+                style: const TextStyle(fontSize: 30),
               ),
               const SizedBox(height: 60),
               GradientButton(
@@ -33,53 +35,53 @@ class LevelSelecetionPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(FreatboardMappingLevelsPages.route());
                 },
-                child: const FittedBox(
+                child: FittedBox(
                   child: Text(
-                    'Mapeamento do braço',
-                    style: TextStyle(fontSize: 25),
+                    l10n.levelSelectionFretboardMapping,
+                    style: const TextStyle(fontSize: 25),
                   ),
                 ),
               ),
               const SizedBox(height: 15),
-              const GradientButton(
+              GradientButton(
                 // onPressed: () {},
                 child: FittedBox(
                   child: Text(
-                    'Intervalos de 3 maior',
-                    style: TextStyle(fontSize: 25),
+                    l10n.levelSelectionIntervals,
+                    style: const TextStyle(fontSize: 25),
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
-              const GradientButton(
-                // onPressed: () {},
-                child: FittedBox(
-                  child: Text(
-                    'Intervalos de quarta',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              const GradientButton(
-                // onPressed: () {},
-                child: FittedBox(
-                  child: Text(
-                    'Intervalos de quinta',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              const GradientButton(
-                // onPressed: () {},
-                child: FittedBox(
-                  child: Text(
-                    'Intervalos de 3 menor',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ),
+              // const SizedBox(height: 15),
+              // const GradientButton(
+              //   // onPressed: () {},
+              //   child: FittedBox(
+              //     child: Text(
+              //       'Intervalos de quarta',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 15),
+              // const GradientButton(
+              //   // onPressed: () {},
+              //   child: FittedBox(
+              //     child: Text(
+              //       'Intervalos de quinta',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 15),
+              // const GradientButton(
+              //   // onPressed: () {},
+              //   child: FittedBox(
+              //     child: Text(
+              //       'Intervalos de 3 menor',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

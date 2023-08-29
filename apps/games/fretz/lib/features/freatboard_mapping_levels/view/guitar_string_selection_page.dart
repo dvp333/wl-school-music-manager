@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fretz/core/design_system/components/gradient_button.dart';
 import 'package:fretz/core/domain/models/guitar_strings.dart';
 import 'package:fretz/features/discover_the_note/presentation/view/discover_the_note_page.dart';
+import 'package:fretz/l10n/l10n.dart';
 
 class GuitarStringSelectationPage extends StatelessWidget {
   const GuitarStringSelectationPage({super.key});
@@ -15,6 +16,7 @@ class GuitarStringSelectationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -24,10 +26,10 @@ class GuitarStringSelectationPage extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 30),
-              const FittedBox(
+              FittedBox(
                 child: Text(
-                  'Escolha a corda',
-                  style: TextStyle(fontSize: 30),
+                  l10n.guitarStringSelectionTitle,
+                  style: const TextStyle(fontSize: 30),
                 ),
               ),
               const SizedBox(height: 60),
@@ -36,9 +38,9 @@ class GuitarStringSelectationPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(DiscoverTheNotePage.route(GuitarString.primeira));
                 },
-                child: const Text(
-                  'Primeira (E)',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  '${l10n.guitarStringSelectionFirstEString} (E)',
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
               const SizedBox(height: 15),
@@ -47,9 +49,9 @@ class GuitarStringSelectationPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(DiscoverTheNotePage.route(GuitarString.segunda));
                 },
-                child: const Text(
-                  'Segunda (B)',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  '${l10n.guitarStringSelectionBString} (B)',
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
               const SizedBox(height: 15),
@@ -58,9 +60,9 @@ class GuitarStringSelectationPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(DiscoverTheNotePage.route(GuitarString.terceira));
                 },
-                child: const Text(
-                  'Terceira (G)',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  '${l10n.guitarStringSelectionGString} (G)',
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
               const SizedBox(height: 15),
@@ -69,9 +71,9 @@ class GuitarStringSelectationPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(DiscoverTheNotePage.route(GuitarString.quarta));
                 },
-                child: const Text(
-                  'Quarta (D)',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  '${l10n.guitarStringSelectionDString} (D)',
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
               const SizedBox(height: 15),
@@ -80,9 +82,9 @@ class GuitarStringSelectationPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(DiscoverTheNotePage.route(GuitarString.quinta));
                 },
-                child: const Text(
-                  'Quinta (A)',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  '${l10n.guitarStringSelectionAString} (A)',
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
               const SizedBox(height: 15),
@@ -91,9 +93,19 @@ class GuitarStringSelectationPage extends StatelessWidget {
                   Navigator.of(context)
                       .push(DiscoverTheNotePage.route(GuitarString.sexta));
                 },
-                child: const Text(
-                  'Sexta (E)',
-                  style: TextStyle(fontSize: 25),
+                child: Text(
+                  '${l10n.guitarStringSelectionLastEString} (E)',
+                  style: const TextStyle(fontSize: 25),
+                ),
+              ),
+              const SizedBox(height: 15),
+              GradientButton(
+                onPressed: () {
+                  Navigator.of(context).push(DiscoverTheNotePage.route());
+                },
+                child: Text(
+                  l10n.guitarStringSelectionAllStrings,
+                  style: const TextStyle(fontSize: 25),
                 ),
               ),
             ],

@@ -77,6 +77,18 @@
             ]
         },
         {
+            "name": "Fretz (release prod)",
+            "cwd": "apps/games/fretz",
+            "request": "launch",
+            "type": "dart",
+            "program": "apps/games/fretz/lib/main_production.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor", "production",
+                "--target", "lib/main_production.dart"
+            ]
+        },
+        {
             "name": "Fretz Old (debug prod)",
             "cwd": "apps/games/fretz_old",
             "request": "launch",

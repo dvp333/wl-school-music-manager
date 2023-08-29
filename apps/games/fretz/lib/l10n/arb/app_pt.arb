@@ -1,0 +1,40 @@
+{
+    "@@locale": "pt",
+
+
+    "mainMenuStart": "Começar",
+    "mainMenuSettings": "Configurações",
+
+
+    "levelSelectionWhatAreWeGonnaPlay": "O que vamos jogar?",
+    "levelSelectionFretboardMapping": "Mapeamento do braço",
+    "levelSelectionIntervals": "Intervalos",
+
+
+    "fretboardMappingSelectionTitle": "Mapeamento do braço",
+    "fretboardMappingSelectionWhatsTheNote": "Qual é a nota?",
+    "fretboardMappingSelectionWhatsTheFret": "Qual é a casa?",
+
+
+    "guitarStringSelectionTitle": "Escolha um corda",
+    "guitarStringSelectionFirstEString": "Primeira",
+    "guitarStringSelectionBString": "Segunda",
+    "guitarStringSelectionGString": "Terceira",
+    "guitarStringSelectionDString": "Quarta",
+    "guitarStringSelectionAString": "Quinta",
+    "guitarStringSelectionLastEString": "Sexta",
+    "guitarStringSelectionAllStrings": "Todas as cordas",
+
+
+    "discoverTheNoteTitle": "Qual é a nota?",
+    "discoverTheNoteString": "Corda",
+    "discoverTheNoteFret": "Casa",
+    "discoverTheNoteCongrats": "Parabéns",
+    "discoverTheNoteSorry": "Que pena, não foi dessa vez.",
+    "discoverTheNoteNextNote": "Próxima nota",
+    "discoverTheNoteGameOver": "GAME OVER",
+    "discoverTheNoteRestart": "Reiniciar",
+    "discoverTheNoteQuit": "Sair"
+    
+
+}

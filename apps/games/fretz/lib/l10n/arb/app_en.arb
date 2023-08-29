@@ -1,7 +1,39 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+
+
+    "mainMenuStart": "Start",
+    "mainMenuSettings": "Settings",
+
+
+    "levelSelectionWhatAreWeGonnaPlay": "What are we gonna play?",
+    "levelSelectionFretboardMapping": "Freatboard mapping",
+    "levelSelectionIntervals": "Intervals",
+
+
+    "fretboardMappingSelectionTitle": "Fretboard mapping",
+    "fretboardMappingSelectionWhatsTheNote": "What's the note?",
+    "fretboardMappingSelectionWhatsTheFret": "What's the fret?",
+
+
+
+    "guitarStringSelectionTitle": "Choose a string",
+    "guitarStringSelectionFirstEString": "First",
+    "guitarStringSelectionBString": "Second",
+    "guitarStringSelectionGString": "Third",
+    "guitarStringSelectionDString": "Fourth",
+    "guitarStringSelectionAString": "Fifth",
+    "guitarStringSelectionLastEString": "Sixth",
+    "guitarStringSelectionAllStrings": "All strings",
+
+
+    "discoverTheNoteTitle": "What's the note?",
+    "discoverTheNoteString": "String",
+    "discoverTheNoteFret": "Fret",
+    "discoverTheNoteCongrats": "Congratulations",
+    "discoverTheNoteSorry": "Sorry, it wasn't this time.",
+    "discoverTheNoteNextNote": "Next note",
+    "discoverTheNoteGameOver": "GAME OVER",
+    "discoverTheNoteRestart": "Restart",
+    "discoverTheNoteQuit": "Quit"
 }

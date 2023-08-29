@@ -14,13 +14,11 @@ A Very Good Project created by Very Good CLI.
 
 ## Tasks
 
-
-    - Mandar sobre robôs para fernanda
-    - Responder email do job de fora
-
-    - Atualizar icone ------------------------------>
-    - Corrigir bugs -------------------------------->
-        - Botão sair não sai do jogo --------------->
+    - Colocar localizations ------------------------>
+    - Corrigir nomes em inglês misturado com português --------> DOING
+    - Atualizar icone ------------------------------> OK
+    - Corrigir bugs --------------------------------> OK
+        - Botão sair não sai do jogo ---------------> OK com workaround
     - Criar conta de developer na Google Play ------>
     - Criar leader boards -------------------------->
     - add leaderboards ----------------------------->

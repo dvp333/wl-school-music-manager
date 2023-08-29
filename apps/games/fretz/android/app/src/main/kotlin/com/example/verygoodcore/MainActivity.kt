@@ -1,4 +1,4 @@
-package com.example.verygoodcore.fretz
+package br.com.dtr.fretz
 
 import io.flutter.embedding.android.FlutterActivity
 

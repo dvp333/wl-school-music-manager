@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example.verygoodcore.fretz" "\0"
+            VALUE "CompanyName", "br.com.dtr.fretz" "\0"
             VALUE "FileDescription", "fretz" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "fretz" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example.verygoodcore.fretz. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 br.com.dtr.fretz. All rights reserved." "\0"
             VALUE "OriginalFilename", "fretz.exe" "\0"
             VALUE "ProductName", "Fretz" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
