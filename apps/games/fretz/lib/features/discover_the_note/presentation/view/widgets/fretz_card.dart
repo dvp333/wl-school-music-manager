@@ -3,10 +3,10 @@ import 'package:fretz/core/design_system/fretz_colors.dart';
 
 class FretzCard extends StatelessWidget {
   const FretzCard({
-    super.key,
     required this.title,
     required this.content,
     required this.complement,
+    super.key,
   });
 
   final String title;
@@ -16,7 +16,6 @@ class FretzCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: const LinearGradient(

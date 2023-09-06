@@ -11,6 +11,8 @@ import 'package:fretz/app/environment/enviroments.dart';
 import 'package:fretz/app/environment/environment_config.dart';
 import 'package:fretz/app/injection/injector.dart';
 import 'package:fretz/firebase_options.dart';
+import 'package:games_services/games_services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -47,11 +49,40 @@ Future<void> bootstrap({
       await _initEnvironmentConfig(env);
       await _initFirebase();
       await _initGetIt();
+      await _signinGamesSevices();
+      await _initMobileAds();
 
       runApp(await builder());
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
+}
+
+Future<void> _initMobileAds() async {
+  try {
+    log('Initializing Mobile Ads...');
+    await MobileAds.instance.initialize();
+  } catch (e) {
+    if (kReleaseMode) {
+      // TODO: send to Crashlytics
+    } else {
+      debugPrint(e.toString());
+    }
+  }
+}
+
+Future<void> _signinGamesSevices() async {
+  try {
+    log('Authenticating into Game Services...');
+    final result = await GameAuth.signIn();
+    print(result);
+  } catch (e) {
+    if (kReleaseMode) {
+      // TODO: send to Crashlytics
+    } else {
+      debugPrint(e.toString());
+    }
+  }
 }
 
 Future<void> _initEnvironmentConfig(Environments env) async {

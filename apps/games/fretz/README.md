@@ -14,26 +14,18 @@ A Very Good Project created by Very Good CLI.
 
 ## Tasks
 
-    - Colocar localizations ------------------------>
-    - Corrigir nomes em inglês misturado com português --------> DOING
-    - Atualizar icone ------------------------------> OK
-    - Corrigir bugs --------------------------------> OK
-        - Botão sair não sai do jogo ---------------> OK com workaround
-    - Criar conta de developer na Google Play ------>
-    - Criar leader boards -------------------------->
-    - add leaderboards ----------------------------->
-    - add ads -------------------------------------->
-    - Add localizations ---------------------------->
-    - righ answer animation ------------------------> OK
-    - implement lives ------------------------------> OK
-    - bug of tapping the answer twice --------------> OK
-    - set dismissable false to dialog --------------> OK
-    - implement points -----------------------------> OK
-    - implements game over dialog ------------------> 
-        - Game Over is not backing to home --------->
-    - implement game play summary ------------------>
-    - Implement Bonnus dialog ---------------------->
-    - implement ask for AD video for extra life ---->
+    - colocar música ambiente ---------------------->
+    - Ajustar o Splash ----------------------------->
+    - Mostrar Ad tela cheia a cada 3 perguntas -----> OK
+    - Perguntar por premium a cada 3 Ads ----------->
+    - Implement ask for AD video for extra life ---->
+    - Exibir modal quando ganhar bonus ------------->
+    - Implement game play summary ------------------> Doing
+        - exibir score -----------------------------> OK
+        - exibir se houve record ------------------->
+        - exibir o max de notas certas seguidas ---->
+        - exibir o tempo de jogo ------------------->
+
 
 
 

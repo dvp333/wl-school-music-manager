@@ -3,7 +3,7 @@
 
 
     "mainMenuStart": "Começar",
-    "mainMenuSettings": "Configurações",
+    "mainMenuLeaderboards": "Placares",
 
 
     "levelSelectionWhatAreWeGonnaPlay": "O que vamos jogar?",
@@ -32,9 +32,10 @@
     "discoverTheNoteCongrats": "Parabéns",
     "discoverTheNoteSorry": "Que pena, não foi dessa vez.",
     "discoverTheNoteNextNote": "Próxima nota",
-    "discoverTheNoteGameOver": "GAME OVER",
+    "discoverTheNoteGameOver": "FIM DE JOGO",
     "discoverTheNoteRestart": "Reiniciar",
-    "discoverTheNoteQuit": "Sair"
+    "discoverTheNoteQuit": "Sair",
+    "discoverTheNoteScore": "Pontuação"
     
 
 }

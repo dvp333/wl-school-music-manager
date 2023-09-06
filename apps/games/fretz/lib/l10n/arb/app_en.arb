@@ -3,7 +3,7 @@
 
 
     "mainMenuStart": "Start",
-    "mainMenuSettings": "Settings",
+    "mainMenuLeaderboards": "Leaderboards",
 
 
     "levelSelectionWhatAreWeGonnaPlay": "What are we gonna play?",
@@ -35,5 +35,6 @@
     "discoverTheNoteNextNote": "Next note",
     "discoverTheNoteGameOver": "GAME OVER",
     "discoverTheNoteRestart": "Restart",
-    "discoverTheNoteQuit": "Quit"
+    "discoverTheNoteQuit": "Quit",
+    "discoverTheNoteScore": "Score"
 }
